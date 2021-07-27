@@ -1,13 +1,41 @@
+var Usuario = require("../model/Usuario");
+
 async function abreAdd(req, res) {
-  res.render("usuario/add.ejs", {});
+  res.render("usuario/add.ejs", { msg: "" });
 }
 
 async function add(req, res) {
-  res.render("usuario/list.ejs", req.body);
+  var nome = req.body.nome;
+  var email = req.body.email;
+  var senha = req.body.senha;
+  var foto = req.body.foto;
+
+  var novoUsuario = new Usuario({
+    nome: nome,
+    email: email,
+    senha: senha,
+    foto: foto,
+  });
+
+  novoUsuario.save(function (err) {
+    if (err) {
+      console.log("O erro que aconteceu foi: " + err);
+    } else {
+      res.render("usuario/add.ejs", { msg: "Usuário adicionado com sucesso!" });
+    }
+  });
 }
 
 async function listar(req, res) {
-  res.send("Oi Mundo!");
+  Usuario.find({})
+    .lean()
+    .exec(function (err, docs) {
+      if (err) {
+        console.log("O erro que aconteceu foi: " + err);
+      } else {
+        res.render("usuario/list.ejs", { Usuarios: docs });
+      }
+    });
 }
 
 async function listarFiltro(req, res) {}
