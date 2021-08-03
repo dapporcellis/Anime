@@ -44,7 +44,15 @@ async function abreEdt(req, res) {}
 
 async function edt(req, res) {}
 
-async function del(req, res) {}
+async function del(req, res) {
+  Usuario.findByIdAndDelete(req.params.id).exec(function (err) {
+    if (err) {
+      console.log("O erro que aconteceu foi: " + err);
+    } else {
+      res.redirect("/usuario");
+    }
+  });
+}
 
 module.exports = {
   add,
