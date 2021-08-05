@@ -21,7 +21,7 @@ async function add(req, res) {
     if (err) {
       console.log("O erro que aconteceu foi: " + err);
     } else {
-      res.render("usuario/add.ejs", { msg: "Usuário adicionado com sucesso!" });
+      res.render("usuario/add.ejs", { msg: "Usuário adicionado!" });
     }
   });
 }
