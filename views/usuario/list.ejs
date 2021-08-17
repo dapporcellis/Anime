@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuário - LIST</title>
-    <style>
-        table, td, th {
-            border: solid 1px black;
-        }
-        td, th{
-            padding: 20px;
-        }
-        th{
-            font-weight: bold;
-            background-color: gray;
-        }
-    </style>
-</head>
-<body>
+<%- include('../cabecalho') -%>
+
+    <form method="post">
+        <input type="text" name="pesquisar" id='pesquisa'>
+        <select name='opcao'>
+            <option value="nome">Nome</option>
+            <option value="email">Email</option>
+        </select>
+        <input type="submit" value="Pesquisar">
+    </form>
+    
     <table>
         <tr>
             <th>Id</th>
@@ -26,6 +16,7 @@
             <th>Email</th>
             <th>Senha</th>
             <th>Foto</th>
+            <th>Edita</th>
             <th>Deleta</th>
         </tr>
 
@@ -36,11 +27,11 @@
                 <td> <%=usuario.email%> </td>
                 <td> <%=usuario.senha%> </td>
                 <td> <%=usuario.foto%> </td>
+                <td> <a href="/usuario/edt/<%=usuario._id%>">Edita</a> </td>
                 <td> <a href="/usuario/del/<%=usuario._id%>">Deleta</a> </td>
             </tr>
         <% }) %>
 
     </table>
     
-</body>
-</html>
+<%- include('../rodape') -%>

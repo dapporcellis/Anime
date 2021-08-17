@@ -1,6 +1,13 @@
-<html>
-<head>
-</head>
-<body>
-</body>
-</html>
+<%- include('../cabecalho') -%>
+
+    <form method="post">
+        Id: <input type="text" name="id" readonly placeholder="id" value="<%=Usuario._id%>"><br>
+        Nome: <input type="text" name="nome" placeholder="Nome" value="<%=Usuario.nome%>"><br>
+        Email: <input type="email" name="email" placeholder="email@email.com" value="<%=Usuario.email%>"><br>
+        Senha: <input type="password" name="senha" placeholder="Senha" value="<%=Usuario.senha%>"><br>
+        Foto: <input type="file" name="foto"><br><br>
+        <input type="submit" name="Enviar">
+    </form>
+    <h2><%=msg%></h2>
+    
+<%- include('../rodape') -%>
